@@ -12,7 +12,7 @@ const app = express();
 app.use(express.json()); // parse JSON request body and attach it to req object so we can access it in request handlers
 
 app.use((req, res, next) => {
-  console.log(req.path, req.method);
+  console.log("Method: " + req.method, "Path: " + req.path);
   next(); //this is mandatory otherwise the request will hang
 });
 
