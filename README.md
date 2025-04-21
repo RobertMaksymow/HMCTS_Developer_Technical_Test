@@ -1,4 +1,5 @@
-To run backend: npm run dev
+To run frontend, cd into frontend folder and run: npm run dev <br>
+To run backend, cd into backend folder and run: npm run dev <br>
 
 API Endpoints (Routes) <br>
 GET /tasks --> Gets all tasks <br>
