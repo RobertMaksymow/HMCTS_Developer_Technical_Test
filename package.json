@@ -1,0 +1,7 @@
+{
+  "name": "HMCTS_Developer_Technical_Test",
+  "scripts": {
+    "start": "node backend/server.js",
+    "build": "cd frontend && npm install && npm run build"
+  }
+}
