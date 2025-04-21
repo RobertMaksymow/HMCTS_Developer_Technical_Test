@@ -1,4 +1,5 @@
 const express = require("express");
+const Task = require("../models/taskModel");
 
 //Creates express router
 const router = express.Router();
@@ -14,8 +15,20 @@ router.get("/:id", (req, res) => {
 });
 
 // POST a new task
-router.post("/", (req, res) => {
-  res.json({ message: "Create a new task" });
+router.post("/", async (req, res) => {
+  const { title, description, status, dueDate } = req.body;
+
+  try {
+    const task = await Task.create({
+      title,
+      description,
+      status,
+      dueDate,
+    });
+    res.status(200).json(task);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
 });
 
 // PATCH a task
