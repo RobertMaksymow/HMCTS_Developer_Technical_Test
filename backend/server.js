@@ -2,6 +2,7 @@ require("dotenv").config();
 
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
 
 const tasksRoutes = require("./routes/tasks");
 
@@ -10,6 +11,7 @@ const app = express();
 // MIDDLEWARE (code executed between getting a request and sending a response)
 
 app.use(express.json()); // parse JSON request body and attach it to req object so we can access it in request handlers
+app.use(cors()); // allow cross-origin requests (from frontend to backend)
 
 app.use((req, res, next) => {
   console.log("Method: " + req.method, "Path: " + req.path);

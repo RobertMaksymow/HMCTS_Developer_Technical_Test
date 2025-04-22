@@ -4,7 +4,7 @@ import Navbar from "./components/Navbar";
 
 function App() {
   return (
-    <div>
+    <div className="App">
       <BrowserRouter>
         <Navbar />
         <div className="pages">
