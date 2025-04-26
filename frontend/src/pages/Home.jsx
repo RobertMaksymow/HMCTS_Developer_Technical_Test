@@ -5,20 +5,22 @@ import TaskForm from "../components/TaskForm";
 const Home = () => {
   const [tasks, setTasks] = useState(null);
 
-  useEffect(() => {
-    const fetchAllTasks = async () => {
-      // LOCAL DEVELOPMENT
-      // const response = await fetch("http://localhost:4000/api/tasks");
-      // PRODUCTION
-      const response = await fetch(
-        "https://hmcts-developer-technical-test.onrender.com/api/tasks"
-      );
-      const json = await response.json();
+  const fetchAllTasks = async () => {
+    // LOCAL DEVELOPMENT
+    // const response = await fetch("http://localhost:4000/api/tasks");
+    // PRODUCTION
+    const response = await fetch(
+      "https://hmcts-developer-technical-test.onrender.com/api/tasks"
+    );
+    const json = await response.json();
 
-      if (response.ok) {
-        setTasks(json);
-      }
-    };
+    if (response.ok) {
+      setTasks(json);
+    }
+  };
+
+  useEffect(() => {
+    console.log("fetching tasks...");
 
     fetchAllTasks();
   }, []);

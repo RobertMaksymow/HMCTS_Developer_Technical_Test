@@ -34,6 +34,7 @@ const TaskForm = () => {
       setStatus("");
       setDueDate("");
       setError(null);
+      window.location.reload(); // Reload the page to see the new task TEMPORARY
       console.log("New task added:", json);
     }
   };
