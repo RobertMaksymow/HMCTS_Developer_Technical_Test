@@ -54,11 +54,20 @@ const TaskForm = () => {
         value={description}
       ></textarea>
       <label>Task Status:</label>
-      <input
-        type="text"
+      <select
+        name="tasks"
+        id="tasks"
         onChange={(e) => setStatus(e.target.value)}
         value={status}
-      />
+      >
+        <option value="">Select a status</option>
+        <option value="To be done">To be done</option>
+        <option value="In progress">In progress</option>
+        <option value="On hold">On hold</option>
+        <option value="Cancelled">Cancelled</option>
+        <option value="Done">Done</option>
+      </select>
+
       <label>Task Due Date:</label>
       <input
         type="date"

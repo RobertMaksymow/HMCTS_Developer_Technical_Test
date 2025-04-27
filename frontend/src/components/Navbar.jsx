@@ -5,8 +5,9 @@ const Navbar = () => {
   return (
     <header>
       <div className="container">
-        <Link to={"/"}>
-          <h1>HMCTS</h1>
+        <Link to={"/"} className="logo-link">
+          <img src="/HMCTS_logo.png" alt="HMCTS Logo" className="logo" />
+          <h1 className="appName">Task Case Manager</h1>
         </Link>
       </div>
     </header>

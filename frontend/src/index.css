@@ -16,11 +16,26 @@ header {
 }
 header .container {
   max-width: 1400px;
-  margin: 0 auto;
+  margin: 10 auto;
   padding: 10px 20px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  /* justify-content: space-between; */
+}
+
+.container .logo {
+  height: 90px;
+  width: auto;
+}
+
+.logo-link {
+  display: flex;
+  /* align-items: center; */
+  text-decoration: none;
+  justify-content: space-evenly;
+}
+.appName {
+  margin-left: 45px;
 }
 header a {
   color: #333;
@@ -59,11 +74,13 @@ header a {
 
 /* input form */
 label,
-input {
+input,
+select {
   display: block;
 }
 input,
-textarea {
+textarea,
+select {
   padding: 10px;
   margin-top: 10px;
   margin-bottom: 20px;
