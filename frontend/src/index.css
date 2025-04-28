@@ -5,6 +5,8 @@
 :root {
   --primary: #22a5f1;
   --error: #e7195a;
+  --edit: #f1b50f;
+  --cancel: #60eee7;
 }
 body {
   background: #f1f1f1;
@@ -99,6 +101,14 @@ form button {
   border-radius: 4px;
   cursor: pointer;
 }
+
+#edit-form {
+  background: var(--edit);
+}
+#cancel-btn {
+  background: var(--cancel);
+  margin-left: 5px;
+}
 div.error {
   padding: 10px;
   background: #ffefef;
@@ -106,4 +116,29 @@ div.error {
   color: var(--error);
   border-radius: 4px;
   margin: 20px 0;
+}
+
+#created-at {
+  font-size: 0.8em;
+  margin-top: 5px;
+  color: #999;
+}
+
+.material-symbols-outlined {
+  cursor: pointer;
+  margin: 0px 10px;
+}
+
+.delete-edit {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+#delete-icon {
+  color: var(--error);
+}
+
+#edit-icon {
+  color: var(--edit);
 }

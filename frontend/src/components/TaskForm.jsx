@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-const TaskForm = () => {
+const TaskForm = ({ editingTask, clearEditingTask, fetchTasks }) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [status, setStatus] = useState("");
@@ -39,6 +39,16 @@ const TaskForm = () => {
     }
   };
 
+  useEffect(() => {
+    if (editingTask) {
+      setTitle(editingTask.title); // Prefill input when editing
+      setDescription(editingTask.description);
+      setStatus(editingTask.status);
+      setDueDate(editingTask.dueDate);
+      setError(null);
+    }
+  }, [editingTask]);
+
   return (
     <form className="create" onSubmit={handleSubmit}>
       <h3>Add a new task</h3>
@@ -74,7 +84,17 @@ const TaskForm = () => {
         onChange={(e) => setDueDate(e.target.value)}
         value={dueDate}
       />
-      <button className="btn">Add Task</button>
+      {/* <button className="btn">Add Task</button> */}
+      {editingTask ? (
+        <>
+          <button className="btn" id="edit-form">
+            Update Task
+          </button>
+          <button id="cancel-btn">Cancel</button>
+        </>
+      ) : (
+        <button className="btn">Add Task</button>
+      )}
       {error && <div className="error">{error}</div>}
     </form>
   );

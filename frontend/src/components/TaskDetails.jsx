@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 
-const TaskDetails = ({ task }) => {
+const TaskDetails = ({ task, onEditClick }) => {
   const handleDelete = async () => {
     const response = await fetch(
       "https://hmcts-developer-technical-test.onrender.com/api/tasks/" +
@@ -12,7 +12,7 @@ const TaskDetails = ({ task }) => {
     const json = await response.json();
 
     if (response.ok) {
-      window.location.reload(); // Reload the page to see the new task TEMPORARY
+      window.location.reload();
       console.log("Task deleted:", json);
     }
     if (!response.ok) {
@@ -31,8 +31,8 @@ const TaskDetails = ({ task }) => {
     const json = await response.json();
 
     if (response.ok) {
-      window.location.reload(); // Reload the page to see the new task TEMPORARY
       console.log("Task edited:", json);
+      // window.location.reload(); // Reload the page to see the new task TEMPORARY
     }
     if (!response.ok) {
       console.error("Error editing task:", json.error);
@@ -63,7 +63,7 @@ const TaskDetails = ({ task }) => {
           hour12: false,
         })}
       </p>
-      <p>
+      <p id="created-at">
         Created At:{" "}
         {new Date(task.createdAt).toLocaleDateString("en-GB", {
           timeZone: "UTC",
@@ -80,8 +80,22 @@ const TaskDetails = ({ task }) => {
         <strong>Created at: </strong>
         {task.createdAt}
       </p> */}
-      <span onClick={handleDelete}>Delete</span>
-      <span onClick={handleEdit}>Edit</span>
+      <div className="delete-edit">
+        <span
+          className="material-symbols-outlined"
+          id="delete-icon"
+          onClick={handleDelete}
+        >
+          Delete
+        </span>
+        <span
+          className="material-symbols-outlined"
+          id="edit-icon"
+          onClick={() => onEditClick(task)}
+        >
+          Edit_Note
+        </span>
+      </div>
     </div>
   );
 };

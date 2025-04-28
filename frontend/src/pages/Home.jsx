@@ -4,6 +4,7 @@ import TaskForm from "../components/TaskForm";
 
 const Home = () => {
   const [tasks, setTasks] = useState(null);
+  const [editingTask, setEditingTask] = useState(null);
 
   const fetchAllTasks = async () => {
     // LOCAL DEVELOPMENT
@@ -28,9 +29,18 @@ const Home = () => {
     <div className="home">
       <div className="tasks">
         {tasks &&
-          tasks.map((task) => <TaskDetails key={task._id} task={task} />)}
+          tasks.map((task) => (
+            <TaskDetails
+              key={task._id}
+              task={task}
+              onEditClick={setEditingTask}
+            />
+          ))}
       </div>
-      <TaskForm />
+      <TaskForm
+        editingTask={editingTask}
+        clearEditingTask={() => setEditingTask(null)}
+      />
     </div>
   );
 };
